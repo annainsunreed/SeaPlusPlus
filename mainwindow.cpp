@@ -1,12 +1,16 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-GameWindow::GameWindow(QWidget *parent) : QWidget(parent) {
+StartWindow::StartWindow(QWidget *parent) : QWidget(parent) {
 
     // initialize start menu buttons
     startButton = new QPushButton("start");
     quitButton = new QPushButton("quit");
     tutorialButton = new QPushButton("tutorial");
+
+    // initialize spin box
+    levelSelector = new QSpinBox();
+    levelSelector->setRange(1,5);
 
     // set layout
     startMenuLayout = new QGridLayout();
@@ -16,8 +20,7 @@ GameWindow::GameWindow(QWidget *parent) : QWidget(parent) {
     startMenuLayout->addWidget(tutorialButton);
 
     // set background
-    //‎⁨iCloud Drive⁩ ▸ ⁨Desktop⁩ ▸ ⁨PIC10C⁩ ▸ ⁨SeaPlusPlus⁩
-    QPixmap startBackground("/SeaPlusPlus/pixel_ocean.png");
+    QPixmap startBackground(":/new/prefix1/pixel_ocean.png");
     startBackground =
             startBackground.scaled(this->size(),Qt::IgnoreAspectRatio);
     QPalette palette;
@@ -30,9 +33,9 @@ GameWindow::GameWindow(QWidget *parent) : QWidget(parent) {
     setUpConnections();
 }
 
-GameWindow::~GameWindow(){}
+StartWindow::~StartWindow(){}
 
-void GameWindow::setUpConnections(){
+void StartWindow::setUpConnections(){
     // set up start menu connections
     // 1. connect start to gameplay paint event
     // 2. connect tutorial to tutorial paint event

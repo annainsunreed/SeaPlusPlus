@@ -8,24 +8,27 @@
 #include <QObject>
 #include <QLayout>
 #include <QPixmap>
+#include <QSpinBox>
 
 //QT_BEGIN_NAMESPACE
-//namespace Ui { class GameWindow; }
+//namespace Ui { class StartWindow; }
 //QT_END_NAMESPACE
 
-class GameWindow : public QWidget
+class StartWindow : public QWidget
 {
     Q_OBJECT
 
 public:
-    GameWindow(QWidget *parent = nullptr);
-    ~GameWindow();
+    StartWindow(QWidget *parent = nullptr);
+    ~StartWindow();
 
     void setUpConnections();
 private:
+
     QPushButton* startButton = nullptr;
     QPushButton* quitButton = nullptr;
     QPushButton* tutorialButton = nullptr;
+    QSpinBox* levelSelector = nullptr;
 
     QGridLayout* startMenuLayout = nullptr;
     QGridLayout* gamePlayLayout = nullptr; // same for tutorial
@@ -34,4 +37,31 @@ private:
 
    // Ui::GameWindow *ui;
 };
+
+class PlayWindow : public QWidget
+{
+    // game play
+    // has holding widget that holds all game levels
+};
+
+class TutorialWindow : public QWidget
+{
+
+};
+
+class Level : public QWidget
+{
+    // make 5 different constructors for different levels
+};
+
+class HoldingWindow : public QWidget
+{
+    Q_OBJECT
+
+public:
+
+private:
+
+};
+
 #endif // MAINWINDOW_H

@@ -7,7 +7,8 @@
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
-    GameWindow game;
+    StartWindow game;
+    game.setFixedSize(600,480);
     game.show();
 
     return app.exec();

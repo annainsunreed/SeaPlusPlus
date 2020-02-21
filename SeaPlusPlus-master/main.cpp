@@ -6,10 +6,10 @@
 
 int main(int argc, char *argv[])
 {
-    QApplication app(argc, argv);
-    GameWindow game;
-    game.setFixedSize(600,480);
-    game.show();
+  QApplication app(argc, argv);
+  HoldingWindow game;   //changed to be the holdingwindow
+  game.setFixedSize(600,480);
+  game.show();
 
-    return app.exec();
+  return app.exec();
 }

@@ -37,7 +37,7 @@ HoldingWindow::HoldingWindow(QWidget *parent) : QWidget(parent) {
    QObject::connect(menu_win, SIGNAL(tutorialButtonPressed()), this, SLOT(DisplayTutorial()));
 
 
-HoldingWindow::~HoldingWindow(){}
+//HoldingWindow::~HoldingWindow(){}
 
 void HoldingWindow::DisplayMenu() {
   //widget_holder->setCurrentIndex(0);

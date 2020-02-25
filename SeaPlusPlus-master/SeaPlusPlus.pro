@@ -1,4 +1,6 @@
-QT       += core gui
+QT       += core gui \
+            multimedia
+
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -22,9 +24,6 @@ SOURCES += \
 HEADERS += \
     mainwindow.h
 
-FORMS += \
-    mainwindow.ui
-
 TRANSLATIONS += \
     SeaPlusPlus_en_US.ts
 
@@ -34,4 +33,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
+    musicfolder.qrc \
     resource.qrc

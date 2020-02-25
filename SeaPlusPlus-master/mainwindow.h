@@ -9,6 +9,7 @@
 #include <QLayout>
 #include <QPixmap>
 #include <QStackedWidget>
+#include <QMediaPlayer>
 
 
 class PlayingWindow;
@@ -21,27 +22,6 @@ class StartMenuWindow;
 //namespace Ui { class GameWindow; }
 //QT_END_NAMESPACE
 
-class HoldingWindow : public QWidget //window for playing game
-{
-  Q_OBJECT
-
-public:
-  HoldingWindow(QWidget *parent = nullptr);
-  ~HoldingWindow();
-
-public slots:
-  void DisplayMenu();
-  void DisplayPlaying();
-  void DisplayTutorial();
-private:
-  QStackedWidget* widget_holder = nullptr;
-  StartMenuWindow* menu_win = nullptr;
-  PlayingWindow* start_win = nullptr;
-  TutorialWindow* tutorial_win = nullptr;
-
-  QVBoxLayout* HoldingLayout = nullptr; //maybe dont do grid layout
-};
-
 
 class StartMenuWindow : public QWidget
 {
@@ -52,7 +32,16 @@ public:
   ~StartMenuWindow();
 
   void setUpConnections();
+public slots:
+  void DisplayPlaying();
+  void DisplayTutorial();
 private:
+
+  QStackedWidget* widget_holder = nullptr;
+
+  PlayingWindow* start_win = nullptr;
+  TutorialWindow* tutorial_win = nullptr;
+
 
   QPushButton* startButton = nullptr;
   QPushButton* quitButton = nullptr;
@@ -60,6 +49,7 @@ private:
 
   QGridLayout* startMenuLayout = nullptr;
   QGridLayout* gamePlayLayout = nullptr; // same for tutorial (probably dont need this layout here)
+
 
   //QPixmap startBackground(":/pixel_ocean.png");
 
@@ -84,6 +74,7 @@ private:
 };
 
 
+
 class TutorialWindow : public QWidget
 {
   Q_OBJECT
@@ -100,3 +91,5 @@ private:
 
 };
 #endif // MAINWINDOW_H
+
+

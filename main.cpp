@@ -2,14 +2,14 @@
 #include<QtWidgets>
 #include<QPushButton>
 #include<QWidget>
-#include "mainwindow.h"
+#include "holdingwidget.h"
 
 int main(int argc, char *argv[])
 {
-  QApplication app(argc, argv);
-  HoldingWindow game;   //changed to be the holdingwindow
-  game.setFixedSize(600,480);
-  game.show();
+   QApplication app(argc, argv);
+   HoldingWidget h;
+   h.setFixedSize(600,480);
+   h.show();
 
-  return app.exec();
+   return app.exec();
 }

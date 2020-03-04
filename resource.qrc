@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/prefix1">
+        <file>pixel_ocean.png</file>
+        <file>bgmusic.mp3</file>
+    </qresource>
+</RCC>

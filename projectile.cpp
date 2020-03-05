@@ -64,7 +64,7 @@ for(size_t i = 0,n = colliding_items.size(); i < n; ++i){
         return;
      }
       // if projectile collides with enemy ship, kill enemy ship
-     StaticGameObject * attacked_object = dynamic_cast<StaticGameObject *>(colliding_items[i]);
+     EnemySub * attacked_object = dynamic_cast<EnemySub *>(colliding_items[i]); //need to make enemy sub class
              if (attacked_object != nullptr && attacked_object->isdamageable() && attacked_object != owner) {
                  // kill
                  attacked_object->kill(); // need to make kill function

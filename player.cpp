@@ -1,15 +1,16 @@
 #include "player.h"
 //#include "rocks.h"
-//#include "gameinstance.h"
+#include "gameview.h"
 #include <QDebug>
+#include <QPixmap>
+#include <QGraphicsPixmapItem>
+#include <QGraphicsItem>
 
-player::player(QPixmap &pixmap): QObject(), QGraphicsPixmapItem(pixmap)
+Player::Player(const QPixmap &pixmap): QObject(), QGraphicsPixmapItem(pixmap)
 {
-    setTransformOriginPoint(20, 38);
-
+    setTransformOriginPoint(130,97);
     x_previous = pos().x();
     y_previous = pos().y();
-
     health = 1;
 }
 
@@ -19,7 +20,7 @@ void Player::keyPressEvent(QKeyEvent *event)
             event->key() == Qt::Key_W ||
             event->key() == Qt::Key_A ||
             event->key() == Qt::Key_S ||
-            event->key() == Qt::Key_D ||
+            event->key() == Qt::Key_D
        )
     {
         keysPressed.insert(event->key());
@@ -32,21 +33,24 @@ void Player::keyPressEvent(QKeyEvent *event)
         {
         case Qt::Key_W:
             setPos(x(), y()-step_size);
+            setRotation(0);
             break;
-        }
-        {
+
         case Qt::Key_A:
             setPos(x()-step_size, y());
+            setRotation(270);
+
             break;
-        }
-        {
+
         case Qt::Key_S:
             setPos(x(), y()+step_size);
+            setRotation(180);
+
             break;
-        }
-        {
+
         case Qt::Key_D:
             setPos(x()+step_size, y());
+            setRotation(90);
             break;
         }
     }
@@ -56,21 +60,45 @@ void Player::keyPressEvent(QKeyEvent *event)
         if (keysPressed.contains(Qt::Key_W) && keysPressed.contains(Qt::Key_A))
         {
             setPos(x()-step_size, y()-step_size);
+            setRotation(315);
+
+
         }
         if (keysPressed.contains(Qt::Key_W) && keysPressed.contains(Qt::Key_D))
         {
             setPos(x()+step_size, y()-step_size);
+            setRotation(45);
+
         }
         if (keysPressed.contains(Qt::Key_S) && keysPressed.contains(Qt::Key_A))
         {
             setPos(x()-step_size, y()+step_size);
+            setRotation(225);
+
         }
         if (keysPressed.contains(Qt::Key_S) && keysPressed.contains(Qt::Key_D))
         {
             setPos(x()+step_size, y()+step_size);
+            setRotation(135);
+
         }
     }
+    x_previous = pos().x();
+    y_previous = pos().y();
+}
 
-    //colliding items function
+void Player::keyReleaseEvent(QKeyEvent *event){
+    keysPressed.remove(event->key());
+}
 
+void Player::setAngle(double a){
+    angle = a;
+}
+
+double Player::getAngle() const{
+    return angle;
+}
+
+QPointF Player::getOrigin(){
+    return mapToScene(transformOriginPoint());
 }

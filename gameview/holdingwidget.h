@@ -9,6 +9,7 @@
 #include <QWidget>
 #include <QApplication>
 #include <QMediaPlayer>
+#include <QMediaPlaylist>
 
 class HoldingWidget : public QWidget
 {

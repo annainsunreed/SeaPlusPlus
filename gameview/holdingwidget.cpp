@@ -1,9 +1,9 @@
 #include"holdingwidget.h"
 
 HoldingWidget::HoldingWidget(QWidget *parent):QWidget (parent){
-    start_win=new StartMenuWindow;
-    play_win=new PlayingWindow;
-    tutorial_win=new TutorialWindow;
+    start_win = new StartMenuWindow;
+    play_win = new PlayingWindow;
+    tutorial_win = new TutorialWindow;
     widget_holder = new QStackedWidget;
     widget_holder->addWidget(start_win);
     widget_holder->addWidget(play_win);
@@ -19,14 +19,26 @@ HoldingWidget::HoldingWidget(QWidget *parent):QWidget (parent){
     this->setPalette(palette);
 
     setLayout(main_layout);
+/*
+    music = new QMediaPlayer();
+    music->setMedia(QUrl("qrc:/pictures/bgmusic.mp3"));
+    music->play();
+  */
 
-    //music = new QMediaPlayer();
-    //music->setMedia(QUrl("qrc:/sound/backgroundsound.mp3"));
-    //music->play();
+    QMediaPlaylist *playlist = new QMediaPlaylist();
+    playlist->addMedia(QUrl("qrc:/pictures/bgmusic.mp3"));
+    playlist->setPlaybackMode(QMediaPlaylist::Loop);
+
+    QMediaPlayer *music = new QMediaPlayer();
+    music->setPlaylist(playlist);
+    music->play();
 
     connect(start_win,SIGNAL(startButtonPressed()),this,SLOT(DisplayPlayingWin()));
     connect(start_win,SIGNAL(tutorialButtonPressed()),this,SLOT(DisplayTutorialWin()));
     connect(start_win,SIGNAL(quitButtonPressed()),qApp,SLOT(quit()));
+    connect(start_win,SIGNAL(soundPlayButtonPressed()),music,SLOT(play()));
+    connect(start_win,SIGNAL(soundPauseButtonPressed()),music,SLOT(pause()));
+
 
     connect(play_win,SIGNAL(playWinBackPressed()),this,SLOT(DisplayStartWin()));
     connect(tutorial_win,SIGNAL(tutorialWinBackPressed()),this,SLOT(DisplayStartWin()));
@@ -43,6 +55,7 @@ void HoldingWidget::DisplayTutorialWin(){
 void HoldingWidget::DisplayPlayingWin(){
      widget_holder->setCurrentIndex(widget_holder->indexOf(play_win));
 }
+
 
 HoldingWidget::~HoldingWidget(){}
 

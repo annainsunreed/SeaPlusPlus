@@ -22,18 +22,23 @@ private:
   QPushButton* startButton = nullptr;
   QPushButton* quitButton = nullptr;
   QPushButton* tutorialButton = nullptr;
-  QGridLayout* startMenuLayout=nullptr;
+  QPushButton* soundButton = nullptr;
+  QVBoxLayout* startMenuLayout=nullptr;
 
 signals:
    void startButtonPressed();
    void tutorialButtonPressed();
    void quitButtonPressed();
+   void soundButtonPressed();
 
 public slots:
    void handleStartButtontPressed();
    void handleTutorialButtonPressed();
    void handleQuitButtonPressed();
+   void handleSoundButtonPressed();
 
 };
 
 #endif
+
+

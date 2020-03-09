@@ -9,6 +9,7 @@
 #include <QWidget>
 #include <QApplication>
 #include <QMediaPlayer>
+#include <QMediaPlaylist>
 
 class HoldingWidget : public QWidget
 {
@@ -21,6 +22,7 @@ public slots:
     void DisplayStartWin();
     void DisplayPlayingWin();
     void DisplayTutorialWin();
+    void toggleSound();
 
 private:
     QStackedWidget* widget_holder = nullptr;

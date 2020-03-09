@@ -36,7 +36,9 @@ HoldingWidget::HoldingWidget(QWidget *parent):QWidget (parent){
     connect(start_win,SIGNAL(startButtonPressed()),this,SLOT(DisplayPlayingWin()));
     connect(start_win,SIGNAL(tutorialButtonPressed()),this,SLOT(DisplayTutorialWin()));
     connect(start_win,SIGNAL(quitButtonPressed()),qApp,SLOT(quit()));
-    connect(start_win,SIGNAL(soundButtonPressed()),this,SLOT(toggleSound()));
+    connect(start_win,SIGNAL(soundPlayButtonPressed()),music,SLOT(play()));
+    connect(start_win,SIGNAL(soundPauseButtonPressed()),music,SLOT(pause()));
+
 
     connect(play_win,SIGNAL(playWinBackPressed()),this,SLOT(DisplayStartWin()));
     connect(tutorial_win,SIGNAL(tutorialWinBackPressed()),this,SLOT(DisplayStartWin()));
@@ -53,9 +55,7 @@ void HoldingWidget::DisplayTutorialWin(){
 void HoldingWidget::DisplayPlayingWin(){
      widget_holder->setCurrentIndex(widget_holder->indexOf(play_win));
 }
-void HoldingWidget::toggleSound(){
-     music->pause();
-}
+
 
 HoldingWidget::~HoldingWidget(){}
 

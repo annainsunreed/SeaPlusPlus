@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/pictures">
+        <file>pixel_ocean.png</file>
+        <file>ship.png</file>
+        <file>test.png</file>
+        <file>rocks.png</file>
+        <file>sea.png</file>
+        <file>rock.png</file>
+    </qresource>
+    <qresource prefix="/sound">
+        <file>backgroundsound.mp3</file>
+    </qresource>
+    <qresource prefix="/"/>
+</RCC>
